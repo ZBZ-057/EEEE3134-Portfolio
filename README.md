@@ -11,7 +11,17 @@ Both versions present my academic background, engineering interests, technical s
 
 ---
 
+## Live Demo
+
+You can access both portfolio websites through the following links:
+
+- **Version 1 – AI-Generated Webpage:** [View Website](https://zbz-057.github.io/EEEE3134-Portfolio/ai-generated-page.html)
+- **Version 2 – AI-Guided Webpage:** [View Website](https://zbz-057.github.io/EEEE3134-Portfolio/ai-guided-page.html)
+
+---
+
 ## Version 1: AI-Generated Webpage
+
 
 [`ai-generated-page.html`](ai-generated-page.html) is an AI-generated academic portfolio.
 
@@ -111,4 +121,3 @@ Start-Process .\ai-guided-page.html
 **Project:** Personal Academic and Engineering Portfolio
 
 **Repository:** [GitHub – ZBZ-057](https://github.com/ZBZ-057/EEEE3134-Portfolio)
-
