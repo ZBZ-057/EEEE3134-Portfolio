@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0B1120">
+  <meta name="description" content="The academic engineering portfolio of Bingzhe Zhao, an Electrical and Electronic Engineering undergraduate at the University of Nottingham Ningbo China.">
+  <title>Bingzhe Zhao | EEEE3134 AI-Guided Portfolio</title>
+  <style>
+    :root {
+      --background: #0B1120;
+      --surface: #16233B;
+      --accent: #38BDF8;
+      --text: #F1F5F9;
+      --muted: #94A3B8;
+      --line: #30425D;
+      --inset: #101B30;
+      --accent-hover: #7DD3FC;
+      --mono: Consolas, 'Courier New', monospace;
+      --header-height: 76px;
+      --gutter: clamp(18px, 4vw, 56px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      color-scheme: dark;
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height) + 20px);
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: system-ui, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, h4, p, figure, dl, dd { margin: 0; }
+
+    h1, h2, h3, h4 {
+      line-height: 1.17;
+      font-weight: 650;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 3.4vw, 3rem);
+      letter-spacing: -.04em;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; }
+
+    :where(a, button, summary):focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--background);
+    }
+
+    .wrap {
+      width: min(1200px, calc(100% - 2 * var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 20;
+      inset: 10px auto auto 12px;
+      transform: translateY(-150%);
+      padding: 10px 15px;
+      border-radius: 5px;
+      color: var(--background);
+      background: var(--accent);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      background: var(--background);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      position: relative;
+      display: flex;
+      min-height: calc(var(--header-height) - 1px);
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      font-size: .94rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .monogram {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border: 1px solid #386288;
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--accent);
+      font: 700 .9rem var(--mono);
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: clamp(14px, 2.2vw, 32px);
+    }
+
+    .site-nav a {
+      display: flex;
+      min-height: 45px;
+      align-items: center;
+      border-bottom: 2px solid transparent;
+      color: var(--muted);
+      font-size: .875rem;
+      font-weight: 550;
+      text-decoration: none;
+      transition: color 150ms ease, border-color 150ms ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a[aria-current="location"] {
+      color: var(--accent);
+    }
+
+    .site-nav a[aria-current="location"] { border-color: var(--accent); }
+
+    .menu-toggle {
+      display: none;
+      min-height: 44px;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 13px;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      font-size: .875rem;
+      cursor: pointer;
+    }
+
+    .menu-icon {
+      width: 14px;
+      height: 10px;
+      border-block: 1px solid currentColor;
+    }
+
+    .hero {
+      background: radial-gradient(ellipse at 81% 39%, #152945 0%, var(--background) 67%);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(28px, 5vw, 68px);
+      padding-block: clamp(54px, 7vw, 100px);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font: .75rem/1.5 var(--mono);
+      letter-spacing: .085em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin-top: 14px;
+      font-size: clamp(3.15rem, 6.2vw, 5.35rem);
+      font-weight: 720;
+      letter-spacing: -.07em;
+      line-height: 1.02;
+    }
+
+    .hero-discipline {
+      margin-top: 20px;
+      color: var(--accent);
+      font-size: clamp(1.04rem, 2vw, 1.48rem);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .hero-university {
+      margin-top: 4px;
+      font-size: 1rem;
+    }
+
+    .hero-intro {
+      max-width: 44ch;
+      margin-top: 16px;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 27px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 47px;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 9px 17px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: .9rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+    }
+
+    .button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .button-primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--background);
+    }
+
+    .button-primary:hover {
+      border-color: var(--accent-hover);
+      background: var(--accent-hover);
+      color: var(--background);
+    }
+
+    .schematic {
+      align-self: center;
+      min-width: 0;
+      overflow: hidden;
+      background: var(--inset);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .hero-schematic {
+      border-color: #395471;
+      border-radius: 13px;
+    }
+
+    .schematic-caption {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 3px 14px;
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
+      font-size: .8rem;
+      font-weight: 600;
+    }
+
+    .schematic-type {
+      color: var(--muted);
+      font: .69rem/1.5 var(--mono);
+      text-transform: uppercase;
+    }
+
+    .schematic-field {
+      position: relative;
+      display: grid;
+      min-height: 172px;
+      align-content: center;
+      gap: 13px;
+      padding: 18px;
+      overflow: hidden;
+      background-image:
+        linear-gradient(#293b555c 1px, transparent 1px),
+        linear-gradient(90deg, #293b555c 1px, transparent 1px);
+      background-position: center;
+      background-size: 20px 20px;
+    }
+
+    .hero-schematic .schematic-field {
+      min-height: 275px;
+      padding-inline: clamp(18px, 3vw, 38px);
+      background-size: 24px 24px;
+    }
+
+    .circuit-trace {
+      position: absolute;
+      width: 24%;
+      height: 20px;
+      border: 1px solid #416789;
+      pointer-events: none;
+    }
+
+    .circuit-trace::after {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border: 1px solid #638BAA;
+      border-radius: 50%;
+      background: var(--inset);
+      content: '';
+    }
+
+    .trace-top {
+      top: 30px;
+      left: 0;
+      border-width: 1px 1px 0 0;
+      border-top-right-radius: 7px;
+    }
+
+    .trace-top::after { right: -4px; bottom: -3px; }
+
+    .trace-bottom {
+      right: 0;
+      bottom: 25px;
+      border-width: 0 0 1px 1px;
+      border-bottom-left-radius: 7px;
+    }
+
+    .trace-bottom::after { left: -4px; top: -3px; }
+
+    .loop-diagram { --connector: 18px; }
+    .hero-schematic .loop-diagram { --connector: clamp(18px, 3vw, 43px); }
+
+    .flow-chain {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--connector) minmax(0, 1fr) var(--connector) minmax(0, 1fr);
+      align-items: stretch;
+    }
+
+    .flow-node {
+      position: relative;
+      display: grid;
+      min-height: 51px;
+      place-items: center;
+      padding: 7px 4px;
+      border: 1px solid #44607E;
+      border-radius: 5px;
+      background: var(--surface);
+      color: var(--text);
+      font: .75rem/1.3 var(--mono);
+      text-align: center;
+    }
+
+    .flow-node-accent {
+      border-color: var(--accent);
+      background: #15344D;
+      color: var(--accent);
+    }
+
+    .hero-schematic .flow-node {
+      min-height: 73px;
+      font-size: clamp(.75rem, 1.2vw, .95rem);
+    }
+
+    .flow-arrow {
+      position: relative;
+      height: 1px;
+      align-self: center;
+      margin-inline: 2px;
+      background: #648FAF;
+    }
+
+    .flow-arrow::after {
+      position: absolute;
+      top: -3px;
+      right: 1px;
+      width: 7px;
+      height: 7px;
+      border-top: 1px solid #648FAF;
+      border-right: 1px solid #648FAF;
+      transform: rotate(45deg);
+      content: '';
+    }
+
+    .feedback-wire {
+      position: relative;
+      width: calc((100% + var(--connector)) / 3);
+      height: 33px;
+      margin-left: 50%;
+      border: 1px solid #648FAF;
+      border-top: 0;
+      border-radius: 0 0 6px 6px;
+    }
+
+    .feedback-wire::before {
+      position: absolute;
+      top: 2px;
+      left: -4px;
+      width: 7px;
+      height: 7px;
+      border-top: 1px solid #648FAF;
+      border-left: 1px solid #648FAF;
+      transform: rotate(45deg);
+      content: '';
+    }
+
+    .feedback-wire span {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      padding-inline: 5px;
+      background: var(--inset);
+      color: var(--muted);
+      font: .68rem/1.4 var(--mono);
+    }
+
+    .smps-feedback {
+      width: calc(2 * (100% + var(--connector)) / 3);
+      margin-left: calc((100% - 2 * var(--connector)) / 6);
+    }
+
+    .section {
+      padding-block: clamp(42px, 6vw, 76px);
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading { margin-bottom: 26px; }
+
+    .profile-row {
+      display: grid;
+      grid-template-columns: minmax(180px, .58fr) minmax(0, 1.42fr);
+      align-items: start;
+      gap: clamp(20px, 4vw, 52px);
+      padding-block: clamp(31px, 4.5vw, 55px);
+    }
+
+    .profile-row h2 { font-size: clamp(1.75rem, 2.9vw, 2.25rem); }
+    .profile-copy { max-width: 66ch; color: var(--muted); }
+
+    .education-entry {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: start;
+      justify-content: space-between;
+      gap: 15px 26px;
+      padding-left: 18px;
+      border-left: 2px solid var(--accent);
+    }
+
+    .education-entry h3 { font-size: 1.1rem; }
+    .education-entry p { margin-top: 7px; color: var(--muted); }
+
+    .education-date {
+      display: grid;
+      gap: 4px;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.25;
+    }
+
+    .education-date time {
+      color: var(--accent);
+      font: 650 1.34rem/1.15 var(--mono);
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 13px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .focus-grid li,
+    .skill-grid > div {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--surface);
+    }
+
+    .focus-grid h3 {
+      margin-bottom: 9px;
+      font-size: 1rem;
+    }
+
+    .focus-grid h3::before {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin-bottom: 13px;
+      background: var(--accent);
+      content: '';
+    }
+
+    .focus-grid p,
+    .skill-grid dd {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .projects-list {
+      display: grid;
+      gap: 23px;
+    }
+
+    .project {
+      --module-inset: clamp(18px, 3vw, 34px);
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--surface);
+    }
+
+    .project-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(286px, 1fr);
+      gap: 26px clamp(24px, 4vw, 48px);
+      padding: var(--module-inset);
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 4px 17px;
+      color: var(--muted);
+      font-size: .81rem;
+    }
+
+    .project-role {
+      color: var(--accent);
+      font-weight: 650;
+    }
+
+    .project h3 {
+      margin-top: 9px;
+      font-size: clamp(1.4rem, 2.6vw, 2rem);
+      letter-spacing: -.035em;
+    }
+
+    .project-objective {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .project-objective strong {
+      margin-right: 5px;
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .tool-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tool-list li {
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--inset);
+      color: var(--text);
+      font: .74rem/1.4 var(--mono);
+    }
+
+    .pendulum-model {
+      position: relative;
+      justify-self: center;
+      width: 180px;
+      max-width: 100%;
+      height: 135px;
+    }
+
+    .pendulum-model span { position: absolute; }
+
+    .robot-floor {
+      inset: auto 0 8px;
+      border-top: 1px solid #648FAF;
+    }
+
+    .robot-axis {
+      inset: 6px auto 43px 50%;
+      border-left: 1px dashed #648FAF;
+    }
+
+    .robot-base {
+      bottom: 25px;
+      left: calc(50% - 43px);
+      width: 86px;
+      height: 18px;
+      border: 1px solid #648FAF;
+      border-radius: 4px;
+      background: var(--surface);
+    }
+
+    .robot-wheel {
+      bottom: 8px;
+      width: 18px;
+      height: 18px;
+      border: 1px solid #648FAF;
+      border-radius: 50%;
+      background: var(--inset);
+    }
+
+    .wheel-left { left: calc(50% - 35px); }
+    .wheel-right { right: calc(50% - 35px); }
+
+    .robot-link {
+      bottom: 43px;
+      left: calc(50% - 1px);
+      width: 3px;
+      height: 69px;
+      border-radius: 3px;
+      background: var(--accent);
+      transform: rotate(22deg);
+      transform-origin: bottom;
+    }
+
+    .robot-link::after,
+    .robot-pivot {
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      background: #15344D;
+    }
+
+    .robot-link::after {
+      position: absolute;
+      top: -5px;
+      left: -4px;
+      content: '';
+    }
+
+    .robot-pivot {
+      bottom: 37px;
+      left: calc(50% - 6px);
+    }
+
+    .robot-angle {
+      top: 22px;
+      left: calc(50% + 7px);
+      color: var(--accent);
+      font: .76rem var(--mono);
+    }
+
+    .vision-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1.3fr);
+    }
+
+    .radar-chain {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr) 15px) minmax(0, 1fr);
+    }
+
+    .project-evidence {
+      display: grid;
+      gap: 10px;
+      margin-inline: var(--module-inset);
+      padding: 16px 19px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--inset);
+    }
+
+    .evidence-label {
+      color: var(--accent);
+      font: .76rem/1.4 var(--mono);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .evidence-copy {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .evidence-copy strong { color: var(--text); }
+
+    .measurement-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 13px 22px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .measurement-list strong {
+      display: block;
+      font-size: 1.28rem;
+      font-weight: 650;
+      line-height: 1.3;
+      letter-spacing: -.02em;
+    }
+
+    .measurement-list span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .83rem;
+      line-height: 1.5;
+    }
+
+    .power-evidence {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px 24px;
+    }
+
+    .power-evidence h4 { margin-bottom: 6px; }
+
+    .project details {
+      margin: 16px var(--module-inset) 14px;
+    }
+
+    .project summary {
+      display: flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 6px 8px;
+      border-radius: 5px;
+      color: var(--accent);
+      font-size: .92rem;
+      font-weight: 650;
+      list-style: none;
+      cursor: pointer;
+      transition: background-color 150ms ease;
+    }
+
+    .project summary::-webkit-details-marker { display: none; }
+    .project summary:hover { background: var(--inset); }
+
+    .expand-icon {
+      position: relative;
+      display: grid;
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .expand-icon::before,
+    .expand-icon::after {
+      grid-area: 1 / 1;
+      width: 9px;
+      height: 1px;
+      background: currentColor;
+      content: '';
+    }
+
+    .expand-icon::after { transform: rotate(90deg); }
+    details[open] .expand-icon::after { display: none; }
+
+    .contribution-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+      gap: 17px 25px;
+      padding-block: 14px 9px;
+      border-top: 1px solid var(--line);
+    }
+
+    .contribution-list dt {
+      margin-bottom: 5px;
+      font-size: .94rem;
+      font-weight: 650;
+    }
+
+    .contribution-list dd {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .skill-grid dt {
+      margin-bottom: 7px;
+      font-weight: 650;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(160px, .58fr) minmax(0, 1.42fr);
+      align-items: start;
+      gap: 25px 40px;
+    }
+
+    .contact-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 16px 17px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      text-decoration: none;
+      transition: border-color 150ms ease;
+    }
+
+    .contact-link:hover { border-color: var(--accent); }
+
+    .contact-label {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .contact-value {
+      font-size: .91rem;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-arrow { color: var(--accent); }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 9px 18px;
+      padding-block: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .footer-inner a {
+      color: var(--text);
+      text-underline-offset: 4px;
+    }
+
+    .footer-inner a:hover { color: var(--accent); }
+
+    @media (max-width: 1020px) {
+      .focus-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 860px) {
+      :root { --header-height: 65px; }
+
+      html:not(.js) { scroll-padding-top: 185px; }
+
+      html:not(.js) .header-inner {
+        flex-wrap: wrap;
+        gap: 1px 15px;
+        padding-block: 10px;
+      }
+
+      html:not(.js) .site-nav { gap: 3px 17px; }
+      .js .menu-toggle { display: inline-flex; }
+      .js .site-nav:not([data-open]) { display: none; }
+
+      .js .site-nav {
+        position: absolute;
+        inset: 100% 0 auto auto;
+        display: grid;
+        width: min(290px, 100%);
+        max-height: calc(100dvh - var(--header-height));
+        gap: 2px;
+        overflow-y: auto;
+        padding: 9px;
+        border: 1px solid var(--line);
+        border-radius: 0 0 8px 8px;
+        background: var(--surface);
+      }
+
+      .js .site-nav a {
+        padding-inline: 11px;
+        border: 0;
+        border-left: 2px solid transparent;
+        border-radius: 3px;
+      }
+
+      .js .site-nav a[aria-current="location"] {
+        border-color: var(--accent);
+        background: var(--background);
+      }
+
+      .js .site-nav a:focus-visible { outline-offset: -3px; }
+
+      .project-main { grid-template-columns: minmax(0, 1.2fr) minmax(270px, 1fr); }
+      .schematic-field { padding-inline: 13px; }
+      .hero-schematic .schematic-field { min-height: 230px; padding-inline: 16px; }
+      .hero-schematic .loop-diagram { --connector: 18px; }
+      .contact-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 740px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero h1 { font-size: clamp(2.75rem, 10.8vw, 4.3rem); }
+      .hero-intro { max-width: 50ch; }
+      .hero-schematic .schematic-field { min-height: 203px; }
+      .hero-schematic .flow-node { min-height: 58px; }
+      .trace-top { top: 21px; }
+      .trace-bottom { bottom: 19px; }
+      .profile-row { grid-template-columns: 1fr; gap: 14px; }
+      .project-main { grid-template-columns: 1fr; gap: 19px; }
+      .project-evidence { padding: 14px; }
+      .focus-grid, .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .focus-grid li, .skill-grid > div { padding: 15px; }
+    }
+
+    @media (max-width: 460px) {
+      .education-entry { gap: 14px; }
+      .power-evidence, .contact-links { grid-template-columns: 1fr; }
+      .measurement-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px; }
+      .measurement-list strong { font-size: 1.15rem; }
+    }
+
+    @media (max-width: 380px) {
+      .focus-grid, .skill-grid { grid-template-columns: 1fr; }
+      .schematic-field { padding-inline: 10px; }
+      .hero-schematic .schematic-field { padding-inline: 14px; }
+      .loop-diagram { --connector: 12px; }
+      .hero-schematic .loop-diagram { --connector: 17px; }
+      .radar-chain { grid-template-columns: repeat(3, minmax(0, 1fr) 12px) minmax(0, 1fr); }
+      .flow-node, .hero-schematic .flow-node { padding-inline: 2px; font-size: .7rem; }
+    }
+
+    @media (max-width: 320px) {
+      .header-inner { gap: 8px; }
+      .brand { flex-shrink: 1; gap: 8px; }
+      .monogram { flex-shrink: 0; }
+      .menu-toggle { gap: 8px; padding-inline: 10px; }
+      .project { --module-inset: 14px; }
+      .schematic-field, .hero-schematic .schematic-field { padding-inline: 7px; }
+      .hero-schematic .loop-diagram { --connector: 13px; }
+      .flow-node, .hero-schematic .flow-node { padding-inline: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#home">
+        <span class="monogram" aria-hidden="true">BZ</span>
+        Bingzhe Zhao
+      </a>
+      <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false">
+        Menu <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="main-navigation" aria-label="Main navigation">
+        <a href="#home" aria-current="location">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#focus">Focus Areas</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero" id="home" aria-labelledby="home-title" tabindex="-1">
+      <div class="wrap hero-layout">
+        <div>
+          <p class="eyebrow">EEEE3134 · Version 2</p>
+          <h1 id="home-title">Bingzhe Zhao</h1>
+          <p class="hero-discipline">Electrical and Electronic Engineering</p>
+          <p class="hero-university">University of Nottingham Ningbo China</p>
+          <p class="hero-intro">I am an undergraduate with project experience in robot control, computer vision, radar measurements, and switched-mode power supplies.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">View Projects <span aria-hidden="true">↓</span></a>
+            <a class="button" href="#contact">Contact <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <figure class="schematic hero-schematic">
+          <figcaption class="schematic-caption">Closed-loop control <span class="schematic-type">Conceptual diagram</span></figcaption>
+          <div class="schematic-field" role="img" aria-label="A reference signal passes to a controller and then to a system. The response feeds back to the controller.">
+            <span class="circuit-trace trace-top"></span>
+            <div class="loop-diagram">
+              <div class="flow-chain">
+                <span class="flow-node">Reference</span>
+                <span class="flow-arrow"></span>
+                <span class="flow-node flow-node-accent">Controller</span>
+                <span class="flow-arrow"></span>
+                <span class="flow-node">System</span>
+              </div>
+              <div class="feedback-wire"><span>Feedback</span></div>
+            </div>
+            <span class="circuit-trace trace-bottom"></span>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="section profile-row" id="about" aria-labelledby="about-title" tabindex="-1">
+        <h2 id="about-title">About me</h2>
+        <p class="profile-copy">My engineering projects have involved developing recognition and control algorithms, modeling dynamic systems, and designing analog and power circuits. I have also integrated embedded hardware and tested engineering systems.</p>
+      </section>
+
+      <section class="section profile-row" id="education" aria-labelledby="education-title" tabindex="-1">
+        <h2 id="education-title">Education</h2>
+        <div class="education-entry">
+          <div>
+            <h3>University of Nottingham Ningbo China</h3>
+            <p>Bachelor’s degree in Electrical and Electronic Engineering, in progress</p>
+          </div>
+          <div class="education-date">Expected graduation <time datetime="2027">2027</time></div>
+        </div>
+      </section>
+
+      <section class="section" id="focus" aria-labelledby="focus-title" tabindex="-1">
+        <h2 class="section-heading" id="focus-title">Technical focus areas</h2>
+        <ul class="focus-grid" role="list">
+          <li><h3>Control Systems</h3><p>PID line following and LQR balance control.</p></li>
+          <li><h3>Embedded Systems</h3><p>STM32 data acquisition and communication between controllers.</p></li>
+          <li><h3>Robotics</h3><p>Robot balance modeling and autonomous vehicle navigation.</p></li>
+          <li><h3>Power Electronics</h3><p>Converter modeling, loop compensation, and PCB layout.</p></li>
+          <li><h3>Signal Processing</h3><p>Analog filtering and conditioning for radar speed measurement.</p></li>
+        </ul>
+      </section>
+
+      <section class="section" id="projects" aria-labelledby="projects-title" tabindex="-1">
+        <h2 class="section-heading" id="projects-title">Selected engineering projects</h2>
+        <div class="projects-list">
+          <article class="project" aria-labelledby="smps-title">
+            <div class="project-main">
+              <div>
+                <p class="project-meta">
+                  <span class="project-role">Core Team Member</span>
+                  <span><time datetime="2026-02">February 2026</time> – <time datetime="2026-05">May 2026</time></span>
+                </p>
+                <h3 id="smps-title">Closed-Loop Control Design for a 50 W High-Frequency SMPS</h3>
+                <p class="project-objective"><strong>Objective</strong> Model a high-frequency switched-mode power supply, design its loop compensation and PCB, and test the prototype.</p>
+                <ul class="tool-list" role="list" aria-label="Tools and technologies">
+                  <li>PLECS</li><li>KiCad</li><li>LCR meter</li><li>Oscilloscope</li>
+                </ul>
+              </div>
+              <figure class="schematic">
+                <figcaption class="schematic-caption">Converter feedback loop <span class="schematic-type">Conceptual</span></figcaption>
+                <div class="schematic-field" role="img" aria-label="A compensator controls a forward converter. The converter output feeds back into the control loop.">
+                  <div class="loop-diagram">
+                    <div class="flow-chain">
+                      <span class="flow-node flow-node-accent">Control</span>
+                      <span class="flow-arrow"></span>
+                      <span class="flow-node">Converter</span>
+                      <span class="flow-arrow"></span>
+                      <span class="flow-node">Output</span>
+                    </div>
+                    <div class="feedback-wire smps-feedback"><span>Feedback</span></div>
+                  </div>
+                </div>
+              </figure>
+            </div>
+
+            <div class="project-evidence power-evidence">
+              <div>
+                <h4 class="evidence-label">Bench measurement</h4>
+                <p class="evidence-copy">The inductance deviation was within <strong>10%</strong>.</p>
+              </div>
+              <div>
+                <h4 class="evidence-label">Thermal modeling</h4>
+                <p class="evidence-copy">The model indicated that MOSFET junction temperatures remained within safe limits.</p>
+              </div>
+              <div>
+                <h4 class="evidence-label">Design targets</h4>
+                <p class="evidence-copy">Convert <strong>30 V AC</strong> to regulated <strong>10 V DC</strong>, with output ripple below <strong>0.2 V</strong>.</p>
+              </div>
+            </div>
+
+            <details>
+              <summary aria-label="Technical details for the switched-mode power supply">Technical details <span class="expand-icon" aria-hidden="true"></span></summary>
+              <dl class="contribution-list">
+                <div>
+                  <dt>Modeling and compensation</dt>
+                  <dd>Built a two-switch forward-converter model in PLECS and designed Type I and Type III compensators using frequency-response analysis. Investigated current-mode control in simulation to improve transient response.</dd>
+                </div>
+                <div>
+                  <dt>PCB design</dt>
+                  <dd>Designed the power PCB layout and two-layer board stack-up in KiCad. Used high-frequency routing and single-point grounding to address EMI.</dd>
+                </div>
+                <div>
+                  <dt>Testing and analysis</dt>
+                  <dd>Characterized component parameters with an LCR meter, measured ripple with an oscilloscope, and assessed MOSFET junction temperatures through thermal modeling.</dd>
+                </div>
+              </dl>
+            </details>
+          </article>
+
+          <article class="project" aria-labelledby="radar-title">
+            <div class="project-main">
+              <div>
+                <p class="project-meta">
+                  <span class="project-role">Signal Circuit Lead</span>
+                  <span><time datetime="2025-09">September 2025</time> – <time datetime="2025-12">December 2025</time></span>
+                </p>
+                <h3 id="radar-title">Radar Speed Measurement System and Signal Conditioning Platform</h3>
+                <p class="project-objective"><strong>Objective</strong> Condition low-amplitude X-band radar signals for speed measurement and display the resulting data on a PC.</p>
+                <ul class="tool-list" role="list" aria-label="Tools and technologies">
+                  <li>LTspice</li><li>STM32 Nucleo</li><li>Embedded C</li><li>USART</li>
+                </ul>
+              </div>
+              <figure class="schematic">
+                <figcaption class="schematic-caption">Radar signal path <span class="schematic-type">Conceptual</span></figcaption>
+                <div class="schematic-field" role="img" aria-label="The radar signal passes through analog conditioning and filtering before sampling on an STM32 and visualization on a PC.">
+                  <div class="radar-chain">
+                    <span class="flow-node">Radar</span>
+                    <span class="flow-arrow"></span>
+                    <span class="flow-node flow-node-accent">Filter</span>
+                    <span class="flow-arrow"></span>
+                    <span class="flow-node">STM32</span>
+                    <span class="flow-arrow"></span>
+                    <span class="flow-node">PC</span>
+                  </div>
+                </div>
+              </figure>
+            </div>
+
+            <div class="project-evidence">
+              <h4 class="evidence-label">Reported outcomes</h4>
+              <ul class="measurement-list" role="list">
+                <li><strong>0.4%</strong><span>Cutoff-frequency deviation</span></li>
+                <li><strong>50 dB</strong><span>Noise attenuation at 10 Hz</span></li>
+                <li><strong>0.12 m/s</strong><span>Human motion detected down to this speed</span></li>
+              </ul>
+              <p class="evidence-copy">Speed measurements closely matched the theoretical Doppler values.</p>
+            </div>
+
+            <details>
+              <summary aria-label="Technical details for radar speed measurement">Technical details <span class="expand-icon" aria-hidden="true"></span></summary>
+              <dl class="contribution-list">
+                <div>
+                  <dt>Analog front end</dt>
+                  <dd>Selected low-noise op-amps, precision resistors, and precision capacitors. Simulated the circuit in LTspice and built a two-stage op-amp conditioning circuit with a fifth-order Butterworth filter.</dd>
+                </div>
+                <div>
+                  <dt>Waveform shaping and sampling</dt>
+                  <dd>Used a Schmitt trigger for waveform shaping and designed a level-shifting circuit for the STM32 Nucleo sampling range.</dd>
+                </div>
+                <div>
+                  <dt>Visualization</dt>
+                  <dd>Implemented real-time PC visualization of speed data using embedded C and USART communication.</dd>
+                </div>
+              </dl>
+            </details>
+          </article>
+
+          <article class="project" aria-labelledby="robot-title">
+            <div class="project-main">
+              <div>
+                <p class="project-meta">
+                  <span class="project-role">Research Assistant</span>
+                  <span><time datetime="2025-06">June 2025</time> – <time datetime="2025-08">August 2025</time></span>
+                </p>
+                <h3 id="robot-title">LQR Control for a Parallel Wheel-Legged Balancing Robot</h3>
+                <p class="project-objective"><strong>Objective</strong> Model the robot’s balance dynamics and evaluate recovery from a disturbance using an LQR controller in simulation.</p>
+                <ul class="tool-list" role="list" aria-label="Tools and technologies">
+                  <li>MATLAB/Simulink</li><li>LQR</li><li>State-space modeling</li>
+                </ul>
+              </div>
+              <figure class="schematic">
+                <figcaption class="schematic-caption">Inverted-pendulum model <span class="schematic-type">Conceptual</span></figcaption>
+                <div class="schematic-field" role="img" aria-label="The robot is represented as a tilted inverted pendulum on a wheeled base, with theta marking its angle from the upright reference.">
+                  <div class="pendulum-model">
+                    <span class="robot-floor"></span>
+                    <span class="robot-axis"></span>
+                    <span class="robot-base"></span>
+                    <span class="robot-wheel wheel-left"></span>
+                    <span class="robot-wheel wheel-right"></span>
+                    <span class="robot-link"></span>
+                    <span class="robot-pivot"></span>
+                    <span class="robot-angle">θ</span>
+                  </div>
+                </div>
+              </figure>
+            </div>
+
+            <div class="project-evidence">
+              <h4 class="evidence-label">Simulation result</h4>
+              <p class="evidence-copy">The simulation showed rapid convergence and balance recovery after a <strong>10° disturbance</strong>.</p>
+            </div>
+
+            <details>
+              <summary aria-label="Technical details for the balancing robot">Technical details <span class="expand-icon" aria-hidden="true"></span></summary>
+              <dl class="contribution-list">
+                <div>
+                  <dt>Modeling</dt>
+                  <dd>Simplified the mechanism to a single-stage inverted-pendulum model and derived the state-space equations.</dd>
+                </div>
+                <div>
+                  <dt>Controller design</dt>
+                  <dd>Developed an initial LQR controller in MATLAB/Simulink and tuned the Q and R weighting matrices to improve disturbance rejection.</dd>
+                </div>
+              </dl>
+            </details>
+          </article>
+
+          <article class="project" aria-labelledby="vehicle-title">
+            <div class="project-main">
+              <div>
+                <p class="project-meta">
+                  <span class="project-role">Algorithm Developer</span>
+                  <span><time datetime="2024-09">September 2024</time> – <time datetime="2025-05">May 2025</time></span>
+                </p>
+                <h3 id="vehicle-title">Intelligent Vision Recognition and Autonomous Line-Following Vehicles</h3>
+                <p class="project-objective"><strong>Objective</strong> Equip an autonomous vehicle to recognize traffic signs, follow a line, and coordinate motion and obstacle avoidance across controllers.</p>
+                <ul class="tool-list" role="list" aria-label="Tools and technologies">
+                  <li>Raspberry Pi</li><li>OpenCV (C++)</li><li>Embedded C</li><li>PID control</li>
+                </ul>
+              </div>
+              <figure class="schematic">
+                <figcaption class="schematic-caption">Vision and line following <span class="schematic-type">Conceptual</span></figcaption>
+                <div class="schematic-field" role="img" aria-label="Images feed HSV recognition and template matching. An infrared sensor array provides feedback for PID motion control.">
+                  <div class="vision-row">
+                    <span class="flow-node">Image input</span>
+                    <span class="flow-arrow"></span>
+                    <span class="flow-node flow-node-accent"><span>HSV recognition<br>and templates</span></span>
+                  </div>
+                  <div class="vision-row">
+                    <span class="flow-node">Infrared array</span>
+                    <span class="flow-arrow"></span>
+                    <span class="flow-node flow-node-accent">PID control</span>
+                  </div>
+                </div>
+              </figure>
+            </div>
+
+            <div class="project-evidence">
+              <h4 class="evidence-label">Reported test results</h4>
+              <ul class="measurement-list" role="list">
+                <li><strong>0.7–0.9</strong><span>Template-matching similarity</span></li>
+                <li><strong>&lt; 5°</strong><span>Absolute error in a 360° in-place turn</span></li>
+                <li><strong>30 cm ± 3 cm</strong><span>Ultrasonic obstacle-avoidance stopping distance</span></li>
+              </ul>
+              <p class="evidence-copy">The vehicle also navigated 90° turns and ramps.</p>
+            </div>
+
+            <details>
+              <summary aria-label="Technical details for the autonomous vehicle">Technical details <span class="expand-icon" aria-hidden="true"></span></summary>
+              <dl class="contribution-list">
+                <div>
+                  <dt>Computer vision</dt>
+                  <dd>Implemented HSV color-space recognition and template matching with OpenCV in C++ on a Raspberry Pi, supporting traffic-sign recognition, speed limiting, and obstacle avoidance.</dd>
+                </div>
+                <div>
+                  <dt>Motion control</dt>
+                  <dd>Developed low-level C code for closed-loop PID control and weighted-average filtering of an eight-channel infrared sensor array. Tuned parameters to reduce oscillation during 90° turns and ramp navigation.</dd>
+                </div>
+                <div>
+                  <dt>System integration</dt>
+                  <dd>Integrated I2C, UART, and SPI communication among multiple controllers.</dd>
+                </div>
+              </dl>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="skills" aria-labelledby="skills-title" tabindex="-1">
+        <h2 class="section-heading" id="skills-title">Technical skills</h2>
+        <dl class="skill-grid">
+          <div><dt>Programming</dt><dd>Familiar with C/C++</dd></div>
+          <div><dt>Control and Simulation</dt><dd>PID control, LQR optimal control, sensor fusion, MATLAB/Simulink, PLECS</dd></div>
+          <div><dt>Circuit Design</dt><dd>LTspice, KiCad</dd></div>
+          <div><dt>Embedded Systems</dt><dd>STM32, Raspberry Pi, Arduino</dd></div>
+          <div><dt>Computer Vision</dt><dd>OpenCV (C++), HSV color-space recognition, template matching</dd></div>
+          <div><dt>Communication Protocols</dt><dd>I2C, UART, SPI, USART</dd></div>
+        </dl>
+      </section>
+
+      <section class="section contact-layout" id="contact" aria-labelledby="contact-title" tabindex="-1">
+        <h2 id="contact-title">Contact</h2>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:ssybz6@nottingham.edu.cn">
+            <span><span class="contact-label">University email</span><span class="contact-value">ssybz6@nottingham.edu.cn</span></span>
+            <span class="contact-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="contact-link" href="https://github.com/ZBZ-057">
+            <span><span class="contact-label">GitHub</span><span class="contact-value">github.com/ZBZ-057</span></span>
+            <span class="contact-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="wrap">
+    <div class="footer-inner">
+      <p>EEEE3134 Coursework Part I · Version 2 (AI-Guided Webpage)</p>
+      <a href="#home">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const navigation = document.querySelector('#main-navigation');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navItems = Array.from(navigation.querySelectorAll('a'), (link) => ({
+      link,
+      section: document.getElementById(link.hash.slice(1)),
+    }));
+    const compactLayout = window.matchMedia('(max-width: 860px)');
+    let currentLink = navItems[0].link;
+    let pendingFrame = 0;
+
+    function setMenuOpen(open) {
+      menuToggle.setAttribute('aria-expanded', String(open));
+      navigation.toggleAttribute('data-open', open);
+    }
+
+    function updateActiveNavigation() {
+      pendingFrame = 0;
+      const readingLine = header.offsetHeight + 35;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      let activeItem = navItems[0];
+
+      for (const item of navItems) {
+        if (item.section.getBoundingClientRect().top > readingLine) break;
+        activeItem = item;
+      }
+
+      // Near the footer, an anchor can be visible even when it cannot reach the reading line.
+      if (maxScroll > 0 && window.scrollY >= maxScroll - 2) {
+        const visibleAnchor = navItems.find(({ link, section }) => {
+          const top = section.getBoundingClientRect().top;
+          return link.hash === window.location.hash && top >= header.offsetHeight && top < window.innerHeight;
+        });
+        activeItem = visibleAnchor || navItems[navItems.length - 1];
+      }
+
+      if (currentLink === activeItem.link) return;
+      currentLink.removeAttribute('aria-current');
+      currentLink = activeItem.link;
+      currentLink.setAttribute('aria-current', 'location');
+    }
+
+    function scheduleNavigationUpdate() {
+      if (!pendingFrame) pendingFrame = window.requestAnimationFrame(updateActiveNavigation);
+    }
+
+    menuToggle.addEventListener('click', () => {
+      setMenuOpen(menuToggle.getAttribute('aria-expanded') === 'false');
+    });
+
+    header.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && navigation.hasAttribute('data-open')) {
+        setMenuOpen(false);
+        menuToggle.focus();
+      }
+    });
+
+    header.addEventListener('focusout', (event) => {
+      if (!header.contains(event.relatedTarget) && navigation.hasAttribute('data-open')) {
+        setMenuOpen(false);
+      }
+    });
+
+    for (const { link, section } of navItems) {
+      link.addEventListener('click', () => {
+        if (navigation.hasAttribute('data-open')) {
+          setMenuOpen(false);
+          section.focus({ preventScroll: true });
+        }
+        scheduleNavigationUpdate();
+      });
+    }
+
+    compactLayout.addEventListener('change', () => setMenuOpen(false));
+    window.addEventListener('scroll', scheduleNavigationUpdate, { passive: true });
+    window.addEventListener('resize', scheduleNavigationUpdate);
+    window.addEventListener('hashchange', scheduleNavigationUpdate);
+    document.addEventListener('toggle', scheduleNavigationUpdate, true);
+    document.documentElement.classList.add('js');
+    scheduleNavigationUpdate();
+  </script>
+</body>
+</html>
